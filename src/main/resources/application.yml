@@ -3,4 +3,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/rentcars.kg
     username: postgres
     password: 123
-
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
