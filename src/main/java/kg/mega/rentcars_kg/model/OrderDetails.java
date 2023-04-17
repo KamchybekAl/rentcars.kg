@@ -2,8 +2,6 @@ package kg.mega.rentcars_kg.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import kg.mega.rentcars_kg.model.enums.GetAddress;
-import kg.mega.rentcars_kg.model.enums.ReturnAddress;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,10 +27,8 @@ public class OrderDetails {
     private String clientName;
     private String clientPhone;
     private String clientEmail;
-    @Enumerated(value = EnumType.STRING)
-    private GetAddress getAddress;
-    @Enumerated(value = EnumType.STRING)
-    private ReturnAddress returnAddress;
+    private String getAddress;
+    private String returnAddress;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime dateTimeFrom;
     @JsonFormat(pattern = "dd-MM-yyy HH:mm:ss")

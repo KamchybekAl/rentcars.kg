@@ -8,8 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_car")
@@ -26,7 +26,7 @@ public class Car {
     private CarModel carModel;
     private String photo;
     private String description;
-    @JsonFormat(pattern = "yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate mnfYear;
     @Enumerated(value = EnumType.STRING)
     private CarColor carColor;
@@ -39,7 +39,7 @@ public class Car {
     @Enumerated(value = EnumType.STRING)
     private CarCategory carCategory;
     private Boolean isAvailable;
-    private BigDecimal price; //(OneToMany)
-
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Price>priceList; //(OneToMany)
 
 }
