@@ -21,7 +21,7 @@ public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private BigDecimal price;
+    private Double price;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss ")
     private LocalDateTime startDate;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
