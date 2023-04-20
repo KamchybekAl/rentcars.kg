@@ -1,10 +1,11 @@
 package kg.mega.rentcars_kg.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tb_address")
@@ -19,5 +20,11 @@ public class Address {
     private String City;
     private String street;
     private String buildingNumber;
+    @ManyToOne
+    @JoinColumn(name = "orderdetails_id")
+    private OrderDetails orderDetails;
+
+
+
 
 }

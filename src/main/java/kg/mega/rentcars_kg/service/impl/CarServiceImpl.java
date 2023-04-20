@@ -1,12 +1,12 @@
 package kg.mega.rentcars_kg.service.impl;
 
-import jakarta.transaction.Transactional;
 import kg.mega.rentcars_kg.model.Car;
 import kg.mega.rentcars_kg.repository.CarRepo;
 import kg.mega.rentcars_kg.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service

@@ -1,10 +1,14 @@
 package kg.mega.rentcars_kg.service;
 
-import kg.mega.rentcars_kg.model.Address;
 import kg.mega.rentcars_kg.model.dto.AddressDTO;
 
+import java.util.List;
+
 public interface AddressService {
-    Address saveAddress (Address address);
+    AddressDTO saveAddress (AddressDTO addressDTO);
     AddressDTO findById(Long id);
+    List<AddressDTO>findAll();
+    AddressDTO updateAddress (AddressDTO addressDTO);
+
 
 }

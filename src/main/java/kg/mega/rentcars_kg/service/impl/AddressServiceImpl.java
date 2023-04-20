@@ -8,18 +8,40 @@ import kg.mega.rentcars_kg.service.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AddressServiceImpl implements AddressService {
     private final AddressRepo addressRepo;
     private final AddressMapper addressMapper;
+
     @Override
-    public Address saveAddress(Address address) {
-        return addressRepo.save(address); // в return принимать DTO, мапить до жава класса, сохранить жава класс,
-        // а потом вернуть обрано сохраненный жава класс в DTO и вернуть фронту.
+    public AddressDTO saveAddress(AddressDTO addressDTO) {
+        Address address = addressMapper.toEntity(addressDTO);
+        Address save = addressRepo.save(address);
+        return addressMapper.toDto(save);
     }
 
     public AddressDTO findById(Long id){
-        return addressMapper.INSTANCE.toDto(addressRepo.findById(id).get());
+        return addressMapper.toDto(addressRepo.findById(id).get());
     }
+
+    @Override
+    public List<AddressDTO> findAll() {
+        return addressMapper.toDTOList(addressRepo.findAll());
+    }
+
+    @Override
+    public AddressDTO updateAddress(AddressDTO addressDTO) {
+        Address updateAddress = addressRepo.findById(addressDTO.getId()).get();
+        updateAddress.setCity(addressDTO.getCity());
+        updateAddress.setStreet(addressDTO.getStreet());
+        updateAddress.setBuildingNumber(addressDTO.getBuildingNumber());
+        return addressMapper.toDto(updateAddress);
+    }
+
+
 }

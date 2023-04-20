@@ -1,13 +1,12 @@
 package kg.mega.rentcars_kg.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -21,7 +20,6 @@ public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String car; // ManyToOne
     private Boolean babySeat;
     private Boolean withDriver;
     private String clientName;
@@ -33,7 +31,14 @@ public class OrderDetails {
     private LocalDateTime dateTimeFrom;
     @JsonFormat(pattern = "dd-MM-yyy HH:mm:ss")
     private LocalDateTime dateTimeTo;
-    private BigDecimal priceBeforeDiscount;
-    private BigDecimal priceWithDiscount;
+    private Double priceBeforeDiscount;
+    private Double priceWithDiscount; // Total price
+    @OneToOne(mappedBy = "orderDetails")
+    private Car car;
+
+
+
+
+
 
 }

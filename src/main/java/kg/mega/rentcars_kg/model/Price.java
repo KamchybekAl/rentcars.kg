@@ -1,13 +1,12 @@
 package kg.mega.rentcars_kg.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,4 +25,7 @@ public class Price {
     private LocalDateTime startDate;
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime endDate;
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 }

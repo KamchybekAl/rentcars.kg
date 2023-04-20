@@ -12,5 +12,6 @@ public enum CarColor {
     YELLOW,
     BLUE,
     GREEN,
-    GREY
+    GREY,
+    PERSONAL_DESIGN_COLOR_OTHER_COLOR
 }
