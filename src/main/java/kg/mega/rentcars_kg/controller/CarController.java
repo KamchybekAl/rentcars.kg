@@ -17,7 +17,7 @@ public class CarController {
     public Car saveCar(@RequestBody Car car){
         return carService.saveCar(car);
     }
-    @GetMapping("/findbyid")
+    @GetMapping("/findById")
     public Car findById(@RequestParam Long id){
         return carService.findById(id);
     }

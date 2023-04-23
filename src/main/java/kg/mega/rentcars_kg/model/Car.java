@@ -38,9 +38,8 @@ public class Car {
     private CarTransmission carTransmission;
     @Enumerated(value = EnumType.STRING)
     private CarCategory carCategory;
-    @OneToOne
-    @JoinColumn(name = "orderDetails_id",referencedColumnName = "id")
-    private OrderDetails orderDetails;
+    @OneToOne(mappedBy = "car")
+    private OrderDetail orderDetail;
 
 
 

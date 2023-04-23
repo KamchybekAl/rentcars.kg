@@ -16,7 +16,7 @@ public class AddressController {
     public AddressDTO saveAddress(@RequestBody AddressDTO addressDTO){
         return addressService.saveAddress(addressDTO);
     }
-    @GetMapping("/findbyid")
+    @GetMapping("/findById")
     public AddressDTO findById (@RequestParam Long id){
         return addressService.findById(id);
     }

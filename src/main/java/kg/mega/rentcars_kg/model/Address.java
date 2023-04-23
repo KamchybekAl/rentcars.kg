@@ -21,8 +21,8 @@ public class Address {
     private String street;
     private String buildingNumber;
     @ManyToOne
-    @JoinColumn(name = "orderdetails_id")
-    private OrderDetails orderDetails;
+    @JoinColumn(name = "orderdetail_id")
+    private OrderDetail orderDetail;
 
 
 

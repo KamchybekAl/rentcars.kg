@@ -10,13 +10,13 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_orderdetails")
+@Table(name = "tb_orderdetail")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class OrderDetails {
+public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,13 +27,14 @@ public class OrderDetails {
     private String clientEmail;
     private String getAddress;
     private String returnAddress;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime dateTimeFrom;
-    @JsonFormat(pattern = "dd-MM-yyy HH:mm:ss")
-    private LocalDateTime dateTimeTo;
     private Double priceBeforeDiscount;
     private Double priceWithDiscount; // Total price
-    @OneToOne(mappedBy = "orderDetails")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dateTimeFrom;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dateTimeTo;
+    @OneToOne
+    @JoinColumn(name = "car_id",referencedColumnName = "id")
     private Car car;
 
 
