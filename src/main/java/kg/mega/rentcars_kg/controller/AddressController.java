@@ -29,5 +29,9 @@ public class AddressController {
     public AddressDTO updateAddress (@RequestBody AddressDTO addressDTO){
         return addressService.updateAddress(addressDTO);
     }
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam Long id){
+        addressService.deleteAddress(id);
+    }
 
 }

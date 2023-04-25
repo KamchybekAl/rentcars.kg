@@ -3,7 +3,11 @@ package kg.mega.rentcars_kg.service.impl;
 import kg.mega.rentcars_kg.mapper.OrderDetailMapper;
 import kg.mega.rentcars_kg.model.OrderDetail;
 import kg.mega.rentcars_kg.model.dto.OrderDetailDTO;
+import kg.mega.rentcars_kg.model.dto.PriceDTO;
+import kg.mega.rentcars_kg.repository.AddressRepo;
+import kg.mega.rentcars_kg.repository.CarRepo;
 import kg.mega.rentcars_kg.repository.OrderDetailRepo;
+import kg.mega.rentcars_kg.repository.PriceRepo;
 import kg.mega.rentcars_kg.service.OrderDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,9 +20,16 @@ import java.util.List;
 public class OrderDetailServiceImpl implements OrderDetailService {
     private final OrderDetailRepo orderDetailRepo;
     private final OrderDetailMapper orderDetailMapper;
+    private final CarRepo carRepo;
+    private final AddressRepo addressRepo;
+    private final PriceRepo priceRepo;
     @Override
     public OrderDetailDTO saveOrderDetail(OrderDetailDTO orderDetailDTO) {
         OrderDetail orderDetail = orderDetailMapper.toEntity(orderDetailDTO);
+        orderDetail.setCar(carRepo.findById(orderDetailDTO.getCar().getId()).get());
+        orderDetail.setGetAddress(addressRepo.findById(orderDetailDTO.getGetAddress().getId()).get());
+        orderDetail.setReturnAddress(addressRepo.findById(orderDetailDTO.getReturnAddress().getId()).get());
+
         OrderDetail save = orderDetailRepo.save(orderDetail);
         return orderDetailMapper.toDto(save);
     }
@@ -41,8 +52,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
         updateOrderDetail.setClientName(orderDetailDTO.getClientName());
         updateOrderDetail.setClientPhone(orderDetailDTO.getClientPhone());
         updateOrderDetail.setClientEmail(orderDetailDTO.getClientEmail());
-        updateOrderDetail.setGetAddress(orderDetailDTO.getGetAddress());
-        updateOrderDetail.setReturnAddress(orderDetailDTO.getReturnAddress());
+//        updateOrderDetail.setGetAddress(orderDetailDTO.getGetAddress());
+//        updateOrderDetail.setReturnAddress(orderDetailDTO.getReturnAddress());
         updateOrderDetail.setDateTimeFrom(orderDetailDTO.getDateTimeFrom());
         updateOrderDetail.setDateTimeTo(orderDetailDTO.getDateTimeTo());
         updateOrderDetail.setPriceBeforeDiscount(orderDetailDTO.getPriceBeforeDiscount());

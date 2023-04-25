@@ -1,8 +1,11 @@
 package kg.mega.rentcars_kg.service.impl;
 
 import kg.mega.rentcars_kg.mapper.PriceMapper;
+import kg.mega.rentcars_kg.model.Car;
 import kg.mega.rentcars_kg.model.Price;
 import kg.mega.rentcars_kg.model.dto.PriceDTO;
+import kg.mega.rentcars_kg.repository.CarRepo;
+import kg.mega.rentcars_kg.repository.DiscountRepo;
 import kg.mega.rentcars_kg.repository.PriceRepo;
 import kg.mega.rentcars_kg.service.PriceService;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +19,13 @@ import java.util.List;
 public class PriceServiceImpl implements PriceService {
     private final PriceRepo priceRepo;
     private final PriceMapper priceMapper;
+    private final CarRepo carRepo;
+
 
     @Override
     public PriceDTO savePrice(PriceDTO priceDTO) {
         Price price = priceMapper.toEntity(priceDTO);
+        price.setCar(carRepo.findById(priceDTO.getCar().getId()).get());
         Price save = priceRepo.save(price);
         return priceMapper.toDto(save);
     }

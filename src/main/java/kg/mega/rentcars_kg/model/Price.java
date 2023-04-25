@@ -25,6 +25,5 @@ public class Price {
 //    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime endDate;
     @ManyToOne
-    @JoinColumn(name = "car_id")
     private Car car;
 }

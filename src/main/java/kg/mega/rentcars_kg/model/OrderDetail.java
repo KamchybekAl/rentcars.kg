@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_orderdetail")
+@Table(name = "orderdetail")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -25,21 +25,20 @@ public class OrderDetail {
     private String clientName;
     private String clientPhone;
     private String clientEmail;
-    private String getAddress;
-    private String returnAddress;
     private Double priceBeforeDiscount;
     private Double priceWithDiscount; // Total price
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTimeFrom;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTimeTo;
-    @OneToOne
-    @JoinColumn(name = "car_id",referencedColumnName = "id")
+
+    @ManyToOne
+    @JoinColumn(name = "getAddress",referencedColumnName = "id")
+    private Address getAddress;
+    @ManyToOne
+    @JoinColumn(name = "returnAddress",referencedColumnName = "id")
+    private Address returnAddress;
+    @ManyToOne
     private Car car;
-
-
-
-
-
 
 }

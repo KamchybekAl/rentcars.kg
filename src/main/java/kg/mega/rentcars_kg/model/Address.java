@@ -20,9 +20,9 @@ public class Address {
     private String City;
     private String street;
     private String buildingNumber;
-    @ManyToOne
-    @JoinColumn(name = "orderdetail_id")
-    private OrderDetail orderDetail;
+//    @ManyToOne
+//    @JoinColumn(name = "orderdetail_id")
+//    private OrderDetail orderDetail;
 
 
 

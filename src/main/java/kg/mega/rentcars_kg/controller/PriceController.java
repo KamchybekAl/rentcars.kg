@@ -15,7 +15,7 @@ public class PriceController {
     private final PriceService priceService;
 
     @PostMapping("/save")
-    public PriceDTO saveAddress(@RequestBody PriceDTO priceDTO){
+    public PriceDTO savePrice(@RequestBody PriceDTO priceDTO){
         return priceService.savePrice(priceDTO);
     }
     @GetMapping("/findById")

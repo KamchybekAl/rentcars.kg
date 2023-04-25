@@ -1,25 +1,15 @@
-package kg.mega.rentcars_kg.model;
+package kg.mega.rentcars_kg.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import kg.mega.rentcars_kg.model.enums.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "car")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
-public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Data
+public class CarDTO {
     private Long id;
     private String photo;
     private String description;
@@ -38,25 +28,4 @@ public class Car {
     private CarTransmission carTransmission;
     @Enumerated(value = EnumType.STRING)
     private CarCategory carCategory;
-
-
-
-//    @OneToOne
-//    @JoinColumn(name = "orderdetail_id",referencedColumnName = "id")
-//    private OrderDetail orderDetail;
-
-
-//    @OneToOne(mappedBy = "car")
-//    private OrderDetail orderDetail;
-
-
-
-
-
-
-
-
-
-
-
 }

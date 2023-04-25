@@ -43,5 +43,12 @@ public class AddressServiceImpl implements AddressService {
         return addressMapper.toDto(updateAddress);
     }
 
+    @Override
+    public void deleteAddress(Long id) {
+        Address deleteAddress = addressRepo.findById(id).get();
+        addressRepo.delete(deleteAddress);
+
+    }
+
 
 }

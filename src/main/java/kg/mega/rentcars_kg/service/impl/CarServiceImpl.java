@@ -1,6 +1,8 @@
 package kg.mega.rentcars_kg.service.impl;
 
+import kg.mega.rentcars_kg.mapper.CarMapper;
 import kg.mega.rentcars_kg.model.Car;
+import kg.mega.rentcars_kg.model.dto.CarDTO;
 import kg.mega.rentcars_kg.repository.CarRepo;
 import kg.mega.rentcars_kg.service.CarService;
 import lombok.RequiredArgsConstructor;
@@ -14,30 +16,33 @@ import java.util.List;
 @Transactional
 public class CarServiceImpl implements CarService {
     private final CarRepo carRepo;
+    private final CarMapper carMapper;
 
     @Override
-    public Car saveCar(Car car) {
+    public CarDTO saveCar(CarDTO carDTO) {
 
-        return carRepo.save(car);
+        Car car = carMapper.toEntity(carDTO);
+        Car save = carRepo.save(car);
+        return carMapper.toDto(save);
     }
 
     @Override
-    public Car findById(Long id) {
-        return carRepo.findById(id).get();
+    public CarDTO findById(Long id) {
+        return carMapper.toDto(carRepo.findById(id).get());
     }
 
     @Override
-    public List<Car> findAll() {
-        return carRepo.findAll();
+    public List<CarDTO> findAll() {
+        return carMapper.toDTOList(carRepo.findAll());
     }
 
     @Override
-    public Car updateCar(Car car) {
-        Car updateCar = carRepo.findById(car.getId()).get();
-        updateCar.setCarModel(car.getCarModel());
-        updateCar.setDescription(car.getDescription());
+    public CarDTO updateCar(CarDTO carDTO) {
+        Car updateCar = carRepo.findById(carDTO.getId()).get();
+        updateCar.setCarModel(carDTO.getCarModel());
+        updateCar.setDescription(carDTO.getDescription());
 
-        return updateCar;
+        return carMapper.toDto(updateCar);
     }
 
     @Override

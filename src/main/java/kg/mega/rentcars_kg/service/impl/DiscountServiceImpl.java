@@ -3,6 +3,7 @@ package kg.mega.rentcars_kg.service.impl;
 import kg.mega.rentcars_kg.mapper.DiscountMapper;
 import kg.mega.rentcars_kg.model.Discount;
 import kg.mega.rentcars_kg.model.dto.DiscountDTO;
+import kg.mega.rentcars_kg.repository.CarRepo;
 import kg.mega.rentcars_kg.repository.DiscountRepo;
 import kg.mega.rentcars_kg.service.DiscountService;
 import lombok.RequiredArgsConstructor;
@@ -16,10 +17,12 @@ import java.util.List;
 public class DiscountServiceImpl implements DiscountService {
     private final DiscountRepo discountRepo;
     private final DiscountMapper discountMapper;
+    private final CarRepo carRepo;
 
     @Override
     public DiscountDTO saveDiscount(DiscountDTO discountDTO) {
         Discount discount = discountMapper.toEntity(discountDTO);
+        discount.setCar(carRepo.findById(discountDTO.getCar().getId()).get());
         Discount save = discountRepo.save(discount);
         return discountMapper.toDto(save);
     }

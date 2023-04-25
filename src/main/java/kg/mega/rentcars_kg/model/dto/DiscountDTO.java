@@ -1,6 +1,7 @@
 package kg.mega.rentcars_kg.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import kg.mega.rentcars_kg.model.Car;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,5 +14,6 @@ public class DiscountDTO {
     private LocalDateTime startDate;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endDate;
+    private Car car;
 
 }

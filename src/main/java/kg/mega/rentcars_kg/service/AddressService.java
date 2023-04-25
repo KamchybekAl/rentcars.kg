@@ -9,6 +9,9 @@ public interface AddressService {
     AddressDTO findById(Long id);
     List<AddressDTO>findAll();
     AddressDTO updateAddress (AddressDTO addressDTO);
+    void deleteAddress(Long id);
+
+
 
 
 }
