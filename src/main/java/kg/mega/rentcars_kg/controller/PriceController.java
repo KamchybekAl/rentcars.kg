@@ -31,6 +31,11 @@ public class PriceController {
     public PriceDTO updatePrice (@RequestBody PriceDTO priceDTO){
         return priceService.updatePrice(priceDTO);
     }
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam Long id){
+        priceService.deletePrice(id);
+    }
+
 
 
 

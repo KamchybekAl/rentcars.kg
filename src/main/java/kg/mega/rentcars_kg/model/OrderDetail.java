@@ -1,13 +1,11 @@
 package kg.mega.rentcars_kg.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orderdetail")
@@ -27,10 +25,10 @@ public class OrderDetail {
     private String clientEmail;
     private Double priceBeforeDiscount;
     private Double priceWithDiscount; // Total price
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime dateTimeFrom;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime dateTimeTo;
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime dateTimeFrom;       На удаление
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    private LocalDateTime dateTimeTo;         На удаление
 
     @ManyToOne
     @JoinColumn(name = "getAddress",referencedColumnName = "id")

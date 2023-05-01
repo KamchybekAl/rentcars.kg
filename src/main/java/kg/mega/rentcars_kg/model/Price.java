@@ -1,9 +1,7 @@
 package kg.mega.rentcars_kg.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,16 +12,15 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Double price;
-//    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss ")
-    private LocalDateTime startDate;
-//    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime endDate;
+    Long id;
+    Double price;
+    LocalDateTime startDate;
+    LocalDateTime endDate;
     @ManyToOne
-    private Car car;
+    Car car;
 }

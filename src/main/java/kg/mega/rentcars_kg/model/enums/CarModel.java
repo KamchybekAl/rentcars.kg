@@ -19,5 +19,4 @@ public enum CarModel {
     LEXUS_RX300,
     LEXUS_RX350,
     LEXUS_GX470
-
 }

@@ -1,8 +1,10 @@
 package kg.mega.rentcars_kg.controller;
 
 import kg.mega.rentcars_kg.model.dto.CarDTO;
+import kg.mega.rentcars_kg.model.dto.CarPriceDTO;
 import kg.mega.rentcars_kg.service.CarService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +36,15 @@ public class CarController {
         carService.deleteCar(id);
     }
 
-
+    @PostMapping("/saveCarWithPrice")
+    public ResponseEntity<?> saveCarWithPrice(@RequestBody CarPriceDTO carPriceDTO){
+    return carService.saveCar(carPriceDTO);
+    }
 }
+
+
+
+
+
+
+

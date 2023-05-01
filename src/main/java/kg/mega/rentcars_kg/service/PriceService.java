@@ -9,4 +9,5 @@ public interface PriceService {
     PriceDTO findById(Long id);
     List<PriceDTO> findAll();
     PriceDTO updatePrice(PriceDTO priceDTO);
+    void deletePrice(Long id);
 }

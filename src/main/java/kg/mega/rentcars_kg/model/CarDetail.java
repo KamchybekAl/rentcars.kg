@@ -7,26 +7,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
+import java.util.List;
 @Entity
-@Table(name = "tb_discount")
+@Table(name = "cardetail")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Discount {
+
+public class CarDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double discount;
-    private Integer daysCount;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss ")
-    private LocalDateTime startDate;
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime endDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dateTimeFrom;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime dateTimeTo;
+    @ElementCollection
+    private List<LocalDate> reservedDates;
     @ManyToOne
     @JoinColumn(name = "car_id")
-    private Car car;
+    Car car;
 
 }
